@@ -4,7 +4,7 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.set("useCreateIndex", true);
 
-mongoose.connect("mongodb+srv://farukh:farukh@cluster0-shcsw.mongodb.net/test", err => {
+mongoose.connect("***********************************", err => {
   // console.log(err);
   if (!err) {
     console.log("MongoDB connection successfull.....");
