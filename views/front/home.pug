@@ -1,0 +1,53 @@
+extends layout
+
+block scripts
+  script(src='/js/custom.js')
+
+block layout-content
+
+  //- banner slider
+  .row
+    .col-md-12
+      .card
+        .card-body(style="background-color:#023F5C;")
+          #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+              li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+              li(data-target='#carouselExampleIndicators', data-slide-to='1')
+            .carousel-inner
+              .carousel-item.active
+                img.d-block.w-100(src='../../img/ebanner1.jpg', alt='First slide')
+              .carousel-item
+                img.d-block.w-100(src='../../img/ebanner2.jpg', alt='Second slide')
+            a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+              span.carousel-control-prev-icon(aria-hidden='true')
+              span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+              span.carousel-control-next-icon(aria-hidden='true')
+              span.sr-only Next
+
+  .card
+    .card-header.bg-navy
+      //- products section
+      h1.text-center PRODUCTS
+    .card-body
+      .row#products-container
+        for products in data
+          - var _id = products._id
+          .col-md-4
+            a(href="/product/"+_id)
+              // Widget: user widget style 1a\
+              .card.card-widget.widget-user
+                // Add the bg color to the header using any of the bg-* classes
+                - var image = products.product_image
+                .widget-user-header.text-white(style="background: url("+image+") center center;")
+                  //- h3.widget-user-username.text-right #{products.product_name}
+                .card-footer
+                  .row
+                    .col-sm-12
+                      .description-block
+                        h3.description-text #{products.product_name}
+                        span.description-text #{products.product_short_description}
+                        h5.description-header &euro; #{products.product_price}
+      button.col-md-12.btn.btn-primary#loadmoreprods MORE PRODUCTS 
+        i.fa.fa-download

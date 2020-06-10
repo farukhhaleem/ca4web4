@@ -1,0 +1,34 @@
+extends layout
+
+block scripts
+  script(src='/js/custom.js')
+
+block layout-content
+    .content-wrapper(style='min-height: 1416.81px;')
+        // Content Header (Page header)
+        section.content
+            // Default box
+            .card.card-solid
+                .card-body
+                    .row
+                        .col-md-6
+                            - var image = data.product_image
+                            img.product-image(src=image alt='Product Image')
+                        .col-md-6
+                            h3.my-3.text-uppercase #{data.product_name}
+                            .row.mt-4
+                            nav.w-100
+                                #product-tab.nav.nav-tabs(role='tablist')
+                                a#product-desc-tab.nav-item.nav-link(data-toggle='tab' href='#product-desc' role='tab' aria-controls='product-desc' aria-selected='false') Description
+                            #nav-tabContent.tab-content.p-3
+                                #product-desc.tab-pane.fade(role='tabpanel' aria-labelledby='product-desc-tab')
+                                | #{data.product_short_description}
+                            #nav-tabContent.tab-content.p-3
+                                #product-desc.tab-pane.fade(role='tabpanel' aria-labelledby='product-desc-tab')
+                                | #{data.product_description}
+                            //- a.btn.btn-primary.addcarts(href='/cart/'+data.id)
+                            a.btn.btn-primary.addcarts#addtocart(data-id=data.id)
+                                i.fa.fa-cart-plus
+                                | Add to cart
+                            .col-md-6
+                                .row.mt-4#msgbox

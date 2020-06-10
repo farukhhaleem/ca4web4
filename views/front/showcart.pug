@@ -1,0 +1,31 @@
+extends layout
+
+block layout-content
+    .row
+        .col-md-1
+        .col-md-10
+            .card.card-default(style="padding:0px 20px;")
+                .card-header
+                h2.text-center
+                    i.fa.fa-cart-plus
+                    | Cart
+                // /.card-header
+                .card-body
+                    .callout.callout-danger
+                        .row
+                            .col-md-10
+                                h5 #{data.product_name}
+                                p #{data.product_description}
+                            .col-md-2
+                                img(src=data.product_image,style="width:100%")
+                                h3.text-center $#{data.product_price}
+                    // /.card-body
+        .col-md-1
+    .row
+        .col-md-1
+        .col-md-10.text-right
+            button.btn.btn-primary.pull-right
+                i.fa.fa-shopping-cart
+                | Proceed to checkout
+        .col-md-1
+        // /.card

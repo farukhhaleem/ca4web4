@@ -1,0 +1,18 @@
+extends layout
+
+block layout-content
+  .container.w-25
+    form.form-signin(role='form', action="/register", method="post")
+      h2.form-signin-heading.mb-4.text-center Sign Up
+      input.form-control.mb-2(type='text', name="name", placeholder='Your Name')
+      input.form-control.mb-2(type='text', name="username", placeholder='Your Username')
+      input.form-control.mb-2(type='password', name="password", placeholder='Your Password')
+      button.btn.btn-lg.btn-info.btn-block.mb-2(type='submit') Sign Up
+      p.text-center Already have an Account? 
+        a(href="/login") Login
+      if (error)
+        .alert.alert-danger.alert-dismissible.show
+          button.close(type="button", data-dismiss="alert").w-5
+            | &times;
+          strong Error!
+          | &nbsp; !{error}
